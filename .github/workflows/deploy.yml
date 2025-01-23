@@ -34,7 +34,7 @@ jobs:
         run: npm run build  # Сборка проекта с помощью Vite
 
       - name: Upload production-ready build files
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3  # Используем последнюю версию действия
         with:
           path: ./dist  # Папка, собранная Vite
 
@@ -47,4 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v1  # Используем последнюю версию действия
