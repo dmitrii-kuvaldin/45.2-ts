@@ -3,11 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Деплой при пуше в ветку main
+      - main  # Деплой запускается при пуше в ветку main
 
 jobs:
-  lint-build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -15,22 +16,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Укажите вашу версию Node.js
+          node-version: 18  # Используйте вашу версию Node.js
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Устанавливаем зависимости
 
-      # Этап линтинга
-      - name: Run ESLint
-        run: npm run lint
+      - name: Lint code
+        run: npm run lint  # Запускаем ESLint для проверки кода
 
-      # Этап сборки
       - name: Build project
-        run: npm run build
+        run: npm run build  # Сборка проекта с помощью Vite
 
-      # Этап деплоя
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist  # Папка, собранная Vite
