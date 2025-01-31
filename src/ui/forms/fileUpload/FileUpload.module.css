@@ -1,0 +1,14 @@
+.dropzone {
+  padding: 20px;
+  border: 2px dashed #4caf50;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropzone:hover {
+  background-color: #333333;
+}

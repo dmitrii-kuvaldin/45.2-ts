@@ -1,0 +1,14 @@
+.container {
+  display: inline-block;
+  position: relative;
+}
+
+.input {
+  padding: 10px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1e1e1e;
+  color: white;
+  width: 180px;
+}

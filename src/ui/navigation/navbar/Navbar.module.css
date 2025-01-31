@@ -1,0 +1,73 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  padding: 16px;
+  border-bottom: 2px solid #4caf50;
+  position: relative;
+}
+
+.burger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+    padding: 5px 12px;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #1e1e1e;
+    flex-direction: column;
+    display: none;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 20px;
+  }
+
+  .navLinks.open {
+    display: flex;
+  }
+
+  .link {
+    padding: 12px;
+    text-align: center;
+  }
+}

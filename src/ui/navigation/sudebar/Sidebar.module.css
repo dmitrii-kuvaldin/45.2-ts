@@ -1,0 +1,73 @@
+.sidebar {
+  z-index: 2;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -250px; /* Меню скрыто справа */
+  background: #1e1e1e;
+  transition: right 0.3s ease-in-out;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #4caf50;
+}
+
+.open {
+  right: 0;
+}
+
+.toggleButton {
+  position: absolute;
+  top: 10px;
+  left: -40px; /* Кнопка слева от меню */
+  background: #4caf50;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggleButton:hover {
+  background: #45a049;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background: #4caf50;
+  color: white;
+}
+
+/* Адаптивное скрытие */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    right: -200px;
+  }
+  .toggleButton {
+    left: -35px;
+  }
+}
