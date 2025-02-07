@@ -1,0 +1,9 @@
+.myInput {
+  width: 200px;
+  margin: 8px;
+  padding: 6px;
+}
+
+.errorText {
+  color: red;
+}
