@@ -1,37 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from './products.module.css';
-import { IProduct } from "./types/types";
 import ProductCard from "../productCard/ProductCard";
-import { Link } from "react-router-dom";
-import { useCart } from "../../context/CartContext";
 import Cart from "../cart/Cart";
 
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { loadLimitProducts, loadProducts } from "../../features/products/productsActions";
+import MyInput from "../myInput/MyInput";
+import MyButton from "../myButton/MyButton";
+import { useFormik } from "formik";
+
 export default function Products(): JSX.Element {
-  // вызываем функцию получения данных из контекста корзины
-  // в ответе через деструктуризацию получаем нужные данные
-  const { addToCart } = useCart();
+  const dispatch = useAppDispatch()
+
+  const {products: reduxProducts, error, isLoading} = useAppSelector(state => state.products)
 
 
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const formik = useFormik({
+    initialValues: {
+      limit: ''
+    } as { limit: string;},
+    validateOnChange: false,
+    onSubmit: (values, { resetForm }) => {
+      console.log(values);
+      dispatch(loadLimitProducts(values.limit))
+      resetForm();
+    }
+  });
 
-  const getProducts = async () => {
-    const res = await fetch('https://fakestoreapi.com/products');
-    const data: IProduct[] = await res.json();
-    setProducts(data);
-  };
 
   useEffect(() => {
-    getProducts();
+    dispatch(loadProducts())
   }, []);
-
-  console.log('render product');
-
 
   return (
     <>
-      <Cart />
+      <form onSubmit={formik.handleSubmit}>
+        <MyInput name="limit" formik={formik} label="amount of products:" placeholder="choose your limit"/>
+        <MyButton text="limit" type="submit"/>
+      </form>
+      {/* <Cart /> */}
       <div className={styles.shopContainer}>
-        {products.map(product => (
+        {/* итерируемся по данным из redux */}
+        {reduxProducts.map(product => (
           <div key={product.id}>
             <ProductCard
               id={product.id}

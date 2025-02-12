@@ -1,3 +1,8 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .myInput {
   width: 200px;
   margin: 8px;

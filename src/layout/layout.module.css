@@ -15,7 +15,12 @@
 .header nav {
   display: flex;
   gap: 15px;
+}
 
+.userInfo {
+  color: rgb(15, 71, 254);
+  text-decoration: underline;
+  margin-right: 10px;
 }
 
 .header a {

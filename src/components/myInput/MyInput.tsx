@@ -15,7 +15,7 @@ export default function MyInput({ name, type = 'text', placeholder = 'input text
   // забираем из formik деструктуризацией данные
   const { handleChange, values, errors } = formik;
   return (
-    <div>
+    <div className={styles.inputContainer}>
       {errors[name] ? <label className={styles.errorText}>{errors[name] as string}</label> : <label>{label}</label>}
       <input onChange={handleChange} value={values[name]} className={styles.myInput} placeholder={placeholder} name={name} type={type} />
     </div>
